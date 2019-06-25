@@ -1,0 +1,42 @@
+﻿@model string
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+			<meta name="viewport" content="width=device-width" />
+			<title>enkriptuj</title>
+	</head>
+
+	<body>
+		<h3>ubaci text za encrypt</h3>
+		@if (ViewBag.poruka != null){
+			<p>@ViewBag.poruka</p>
+		}
+
+		@using (Html.BeginForm("enkriptuj", "Home", FormMethod.Post)) {
+		<fieldset>
+			<table>
+				<tr>
+					<td>Enter text </td>
+					<td><input type="text" name="Box1" value="" /></td>
+				</tr>
+
+				<tr>
+					<td>Encrypted </td>
+					<td><input type="text" name="Box2" value="@Model" /></td>
+				</tr>
+
+				<tr>
+					<td colspan="2"><input type="submit" value="Enkriptuj" /></td>
+				</tr>
+			</table>
+		</fieldset>
+		}
+
+	</body>
+</html>

@@ -1,0 +1,1185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBBTAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accommodation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDestination" Type="int" Nullable="false" />
+          <Property Name="IDAccTraDesCategory" Type="int" Nullable="false" />
+          <Property Name="Description" Type="text" />
+        </EntityType>
+        <EntityType Name="AccTraDesCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccTraDesType" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admin SMTP parameteres">
+          <Key>
+            <PropertyRef Name="Ind" />
+          </Key>
+          <Property Name="Ind" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="host" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CTEmployee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="LName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Pass" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="EmployeeType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Destination">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCountry" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employee Activation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ActivationCode" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDLifeInCity" Type="int" />
+          <Property Name="IDTransportation" Type="int" />
+          <Property Name="IDAccommodation" Type="int" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="FeedbackDate" Type="datetime" Nullable="false" />
+          <Property Name="Comment" Type="text" Nullable="false" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="Heading" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Info">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDProvider" Type="int" />
+          <Property Name="IDEmployee" Type="int" />
+          <Property Name="IDDestinationProvider" Type="int" />
+          <Property Name="IDAccommodation" Type="int" />
+          <Property Name="AccommodationTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="WebAddress" Type="varchar" MaxLength="50" />
+          <Property Name="Category" Type="int" />
+          <Property Name="Address1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address2" Type="varchar" MaxLength="50" />
+          <Property Name="Tel1" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Tel2" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="LifeInCity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDestination" Type="int" Nullable="false" />
+          <Property Name="IDAccTraDesCategory" Type="int" Nullable="false" />
+          <Property Name="ChangeDate" Type="datetime" Nullable="false" />
+          <Property Name="IDAdmin" Type="int" Nullable="false" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDLifeInCity" Type="int" />
+          <Property Name="IDAccommodation" Type="int" />
+          <Property Name="IDEmployee" Type="int" />
+          <Property Name="IDProvider" Type="int" />
+        </EntityType>
+        <EntityType Name="Provider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDAccTraDesCategory" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transportation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDestinationFrom" Type="int" Nullable="false" />
+          <Property Name="IDAccommodation" Type="int" Nullable="false" />
+          <Property Name="IDAccTraDesCategory" Type="int" Nullable="false" />
+          <Property Name="Description" Type="text" />
+        </EntityType>
+        <Association Name="FK_AccTraDesCategory">
+          <End Role="AccTraDesCategory" Type="Self.AccTraDesCategory" Multiplicity="1" />
+          <End Role="LifeInCity" Type="Self.LifeInCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccTraDesCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LifeInCity">
+              <PropertyRef Name="IDAccTraDesCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccTraDesCategoryAccommodation">
+          <End Role="AccTraDesCategory" Type="Self.AccTraDesCategory" Multiplicity="1" />
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccTraDesCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Accommodation">
+              <PropertyRef Name="IDAccTraDesCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccTraDesCategoryProvider">
+          <End Role="AccTraDesCategory" Type="Self.AccTraDesCategory" Multiplicity="1" />
+          <End Role="Provider" Type="Self.Provider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccTraDesCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Provider">
+              <PropertyRef Name="IDAccTraDesCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccTraDesCategoryTransportation">
+          <End Role="AccTraDesCategory" Type="Self.AccTraDesCategory" Multiplicity="1" />
+          <End Role="Transportation" Type="Self.Transportation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccTraDesCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transportation">
+              <PropertyRef Name="IDAccTraDesCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admin">
+          <End Role="CTEmployee" Type="Self.CTEmployee" Multiplicity="1" />
+          <End Role="LifeInCity" Type="Self.LifeInCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CTEmployee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LifeInCity">
+              <PropertyRef Name="IDAdmin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Destination" Type="Self.Destination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Destination">
+              <PropertyRef Name="IDCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Destination">
+          <End Role="Destination" Type="Self.Destination" Multiplicity="1" />
+          <End Role="LifeInCity" Type="Self.LifeInCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LifeInCity">
+              <PropertyRef Name="IDDestination" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DestinationAccommodation">
+          <End Role="Destination" Type="Self.Destination" Multiplicity="1" />
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Accommodation">
+              <PropertyRef Name="IDDestination" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DestinationTransportation">
+          <End Role="Destination" Type="Self.Destination" Multiplicity="1" />
+          <End Role="Transportation" Type="Self.Transportation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transportation">
+              <PropertyRef Name="IDDestinationFrom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedbackAccommodation">
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="0..1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accommodation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="IDAccommodation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedbackLifeInCity">
+          <End Role="LifeInCity" Type="Self.LifeInCity" Multiplicity="0..1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LifeInCity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="IDLifeInCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedbackTransportation">
+          <End Role="Transportation" Type="Self.Transportation" Multiplicity="0..1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transportation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="IDTransportation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedbackUser">
+          <End Role="CTEmployee" Type="Self.CTEmployee" Multiplicity="1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CTEmployee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IDAccommodation">
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="0..1" />
+          <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accommodation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="IDAccommodation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IDLifeInCity">
+          <End Role="LifeInCity" Type="Self.LifeInCity" Multiplicity="0..1" />
+          <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LifeInCity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="IDLifeInCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IDProvider">
+          <End Role="Provider" Type="Self.Provider" Multiplicity="0..1" />
+          <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="IDProvider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoAccommodation">
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="0..1" />
+          <End Role="Info" Type="Self.Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accommodation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Info">
+              <PropertyRef Name="IDAccommodation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoDestinationProvider">
+          <End Role="Destination" Type="Self.Destination" Multiplicity="0..1" />
+          <End Role="Info" Type="Self.Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Info">
+              <PropertyRef Name="IDDestinationProvider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoEmployee">
+          <End Role="CTEmployee" Type="Self.CTEmployee" Multiplicity="0..1" />
+          <End Role="Info" Type="Self.Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CTEmployee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Info">
+              <PropertyRef Name="IDEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoProvider">
+          <End Role="Provider" Type="Self.Provider" Multiplicity="0..1" />
+          <End Role="Info" Type="Self.Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Info">
+              <PropertyRef Name="IDProvider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransportationAccommodation">
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="1" />
+          <End Role="Transportation" Type="Self.Transportation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accommodation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transportation">
+              <PropertyRef Name="IDAccommodation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBBTAModelStoreContainer">
+          <EntitySet Name="Accommodation" EntityType="Self.Accommodation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccTraDesCategory" EntityType="Self.AccTraDesCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin SMTP parameteres" EntityType="Self.Admin SMTP parameteres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CTEmployee" EntityType="Self.CTEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Destination" EntityType="Self.Destination" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee Activation" EntityType="Self.Employee Activation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Info" EntityType="Self.Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LifeInCity" EntityType="Self.LifeInCity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provider" EntityType="Self.Provider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transportation" EntityType="Self.Transportation" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AccTraDesCategory" Association="Self.FK_AccTraDesCategory">
+            <End Role="AccTraDesCategory" EntitySet="AccTraDesCategory" />
+            <End Role="LifeInCity" EntitySet="LifeInCity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccTraDesCategoryAccommodation" Association="Self.FK_AccTraDesCategoryAccommodation">
+            <End Role="AccTraDesCategory" EntitySet="AccTraDesCategory" />
+            <End Role="Accommodation" EntitySet="Accommodation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccTraDesCategoryProvider" Association="Self.FK_AccTraDesCategoryProvider">
+            <End Role="AccTraDesCategory" EntitySet="AccTraDesCategory" />
+            <End Role="Provider" EntitySet="Provider" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccTraDesCategoryTransportation" Association="Self.FK_AccTraDesCategoryTransportation">
+            <End Role="AccTraDesCategory" EntitySet="AccTraDesCategory" />
+            <End Role="Transportation" EntitySet="Transportation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admin" Association="Self.FK_Admin">
+            <End Role="CTEmployee" EntitySet="CTEmployee" />
+            <End Role="LifeInCity" EntitySet="LifeInCity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country" Association="Self.FK_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Destination" EntitySet="Destination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Destination" Association="Self.FK_Destination">
+            <End Role="Destination" EntitySet="Destination" />
+            <End Role="LifeInCity" EntitySet="LifeInCity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DestinationAccommodation" Association="Self.FK_DestinationAccommodation">
+            <End Role="Destination" EntitySet="Destination" />
+            <End Role="Accommodation" EntitySet="Accommodation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DestinationTransportation" Association="Self.FK_DestinationTransportation">
+            <End Role="Destination" EntitySet="Destination" />
+            <End Role="Transportation" EntitySet="Transportation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedbackAccommodation" Association="Self.FK_FeedbackAccommodation">
+            <End Role="Accommodation" EntitySet="Accommodation" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedbackLifeInCity" Association="Self.FK_FeedbackLifeInCity">
+            <End Role="LifeInCity" EntitySet="LifeInCity" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedbackTransportation" Association="Self.FK_FeedbackTransportation">
+            <End Role="Transportation" EntitySet="Transportation" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedbackUser" Association="Self.FK_FeedbackUser">
+            <End Role="CTEmployee" EntitySet="CTEmployee" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IDAccommodation" Association="Self.FK_IDAccommodation">
+            <End Role="Accommodation" EntitySet="Accommodation" />
+            <End Role="Picture" EntitySet="Picture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IDLifeInCity" Association="Self.FK_IDLifeInCity">
+            <End Role="LifeInCity" EntitySet="LifeInCity" />
+            <End Role="Picture" EntitySet="Picture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IDProvider" Association="Self.FK_IDProvider">
+            <End Role="Provider" EntitySet="Provider" />
+            <End Role="Picture" EntitySet="Picture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoAccommodation" Association="Self.FK_InfoAccommodation">
+            <End Role="Accommodation" EntitySet="Accommodation" />
+            <End Role="Info" EntitySet="Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoDestinationProvider" Association="Self.FK_InfoDestinationProvider">
+            <End Role="Destination" EntitySet="Destination" />
+            <End Role="Info" EntitySet="Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoEmployee" Association="Self.FK_InfoEmployee">
+            <End Role="CTEmployee" EntitySet="CTEmployee" />
+            <End Role="Info" EntitySet="Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoProvider" Association="Self.FK_InfoProvider">
+            <End Role="Provider" EntitySet="Provider" />
+            <End Role="Info" EntitySet="Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransportationAccommodation" Association="Self.FK_TransportationAccommodation">
+            <End Role="Accommodation" EntitySet="Accommodation" />
+            <End Role="Transportation" EntitySet="Transportation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBBTAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Accommodation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDestination" Type="Int32" Nullable="false" />
+          <Property Name="IDAccTraDesCategory" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AccTraDesCategory" Relationship="Self.FK_AccTraDesCategoryAccommodation" FromRole="Accommodation" ToRole="AccTraDesCategory" />
+          <NavigationProperty Name="Destination" Relationship="Self.FK_DestinationAccommodation" FromRole="Accommodation" ToRole="Destination" />
+          <NavigationProperty Name="Feedbacks" Relationship="Self.FK_FeedbackAccommodation" FromRole="Accommodation" ToRole="Feedback" />
+          <NavigationProperty Name="Pictures" Relationship="Self.FK_IDAccommodation" FromRole="Accommodation" ToRole="Picture" />
+          <NavigationProperty Name="Infoes" Relationship="Self.FK_InfoAccommodation" FromRole="Accommodation" ToRole="Info" />
+          <NavigationProperty Name="Transportations" Relationship="Self.FK_TransportationAccommodation" FromRole="Accommodation" ToRole="Transportation" />
+        </EntityType>
+        <EntityType Name="AccTraDesCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccTraDesType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Accommodations" Relationship="Self.FK_AccTraDesCategoryAccommodation" FromRole="AccTraDesCategory" ToRole="Accommodation" />
+          <NavigationProperty Name="LifeInCities" Relationship="Self.FK_AccTraDesCategory" FromRole="AccTraDesCategory" ToRole="LifeInCity" />
+          <NavigationProperty Name="Providers" Relationship="Self.FK_AccTraDesCategoryProvider" FromRole="AccTraDesCategory" ToRole="Provider" />
+          <NavigationProperty Name="Transportations" Relationship="Self.FK_AccTraDesCategoryTransportation" FromRole="AccTraDesCategory" ToRole="Transportation" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Destinations" Relationship="Self.FK_Country" FromRole="Country" ToRole="Destination" />
+        </EntityType>
+        <EntityType Name="CTEmployee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pass" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeeType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LifeInCities" Relationship="Self.FK_Admin" FromRole="CTEmployee" ToRole="LifeInCity" />
+          <NavigationProperty Name="Feedbacks" Relationship="Self.FK_FeedbackUser" FromRole="CTEmployee" ToRole="Feedback" />
+          <NavigationProperty Name="Infoes" Relationship="Self.FK_InfoEmployee" FromRole="CTEmployee" ToRole="Info" />
+        </EntityType>
+        <EntityType Name="Destination">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCountry" Type="Int32" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accommodations" Relationship="Self.FK_DestinationAccommodation" FromRole="Destination" ToRole="Accommodation" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Country" FromRole="Destination" ToRole="Country" />
+          <NavigationProperty Name="LifeInCities" Relationship="Self.FK_Destination" FromRole="Destination" ToRole="LifeInCity" />
+          <NavigationProperty Name="Transportations" Relationship="Self.FK_DestinationTransportation" FromRole="Destination" ToRole="Transportation" />
+          <NavigationProperty Name="Infoes" Relationship="Self.FK_InfoDestinationProvider" FromRole="Destination" ToRole="Info" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDLifeInCity" Type="Int32" />
+          <Property Name="IDTransportation" Type="Int32" />
+          <Property Name="IDAccommodation" Type="Int32" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="FeedbackDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="Heading" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Accommodation" Relationship="Self.FK_FeedbackAccommodation" FromRole="Feedback" ToRole="Accommodation" />
+          <NavigationProperty Name="CTEmployee" Relationship="Self.FK_FeedbackUser" FromRole="Feedback" ToRole="CTEmployee" />
+          <NavigationProperty Name="LifeInCity" Relationship="Self.FK_FeedbackLifeInCity" FromRole="Feedback" ToRole="LifeInCity" />
+          <NavigationProperty Name="Transportation" Relationship="Self.FK_FeedbackTransportation" FromRole="Feedback" ToRole="Transportation" />
+        </EntityType>
+        <EntityType Name="Info">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDProvider" Type="Int32" />
+          <Property Name="IDEmployee" Type="Int32" />
+          <Property Name="IDDestinationProvider" Type="Int32" />
+          <Property Name="IDAccommodation" Type="Int32" />
+          <Property Name="AccommodationTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WebAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="Int32" />
+          <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tel1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tel2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Accommodation" Relationship="Self.FK_InfoAccommodation" FromRole="Info" ToRole="Accommodation" />
+          <NavigationProperty Name="CTEmployee" Relationship="Self.FK_InfoEmployee" FromRole="Info" ToRole="CTEmployee" />
+          <NavigationProperty Name="Destination" Relationship="Self.FK_InfoDestinationProvider" FromRole="Info" ToRole="Destination" />
+          <NavigationProperty Name="Provider" Relationship="Self.FK_InfoProvider" FromRole="Info" ToRole="Provider" />
+        </EntityType>
+        <EntityType Name="LifeInCity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDestination" Type="Int32" Nullable="false" />
+          <Property Name="IDAccTraDesCategory" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChangeDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IDAdmin" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AccTraDesCategory" Relationship="Self.FK_AccTraDesCategory" FromRole="LifeInCity" ToRole="AccTraDesCategory" />
+          <NavigationProperty Name="CTEmployee" Relationship="Self.FK_Admin" FromRole="LifeInCity" ToRole="CTEmployee" />
+          <NavigationProperty Name="Destination" Relationship="Self.FK_Destination" FromRole="LifeInCity" ToRole="Destination" />
+          <NavigationProperty Name="Feedbacks" Relationship="Self.FK_FeedbackLifeInCity" FromRole="LifeInCity" ToRole="Feedback" />
+          <NavigationProperty Name="Pictures" Relationship="Self.FK_IDLifeInCity" FromRole="LifeInCity" ToRole="Picture" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDLifeInCity" Type="Int32" />
+          <Property Name="IDAccommodation" Type="Int32" />
+          <Property Name="IDEmployee" Type="Int32" />
+          <Property Name="IDProvider" Type="Int32" />
+          <NavigationProperty Name="Accommodation" Relationship="Self.FK_IDAccommodation" FromRole="Picture" ToRole="Accommodation" />
+          <NavigationProperty Name="LifeInCity" Relationship="Self.FK_IDLifeInCity" FromRole="Picture" ToRole="LifeInCity" />
+          <NavigationProperty Name="Provider" Relationship="Self.FK_IDProvider" FromRole="Picture" ToRole="Provider" />
+        </EntityType>
+        <EntityType Name="Provider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDAccTraDesCategory" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AccTraDesCategory" Relationship="Self.FK_AccTraDesCategoryProvider" FromRole="Provider" ToRole="AccTraDesCategory" />
+          <NavigationProperty Name="Infoes" Relationship="Self.FK_InfoProvider" FromRole="Provider" ToRole="Info" />
+          <NavigationProperty Name="Pictures" Relationship="Self.FK_IDProvider" FromRole="Provider" ToRole="Picture" />
+        </EntityType>
+        <EntityType Name="Transportation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDestinationFrom" Type="Int32" Nullable="false" />
+          <Property Name="IDAccommodation" Type="Int32" Nullable="false" />
+          <Property Name="IDAccTraDesCategory" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Accommodation" Relationship="Self.FK_TransportationAccommodation" FromRole="Transportation" ToRole="Accommodation" />
+          <NavigationProperty Name="AccTraDesCategory" Relationship="Self.FK_AccTraDesCategoryTransportation" FromRole="Transportation" ToRole="AccTraDesCategory" />
+          <NavigationProperty Name="Destination" Relationship="Self.FK_DestinationTransportation" FromRole="Transportation" ToRole="Destination" />
+          <NavigationProperty Name="Feedbacks" Relationship="Self.FK_FeedbackTransportation" FromRole="Transportation" ToRole="Feedback" />
+        </EntityType>
+        <Association Name="FK_AccTraDesCategoryAccommodation">
+          <End Role="AccTraDesCategory" Type="Self.AccTraDesCategory" Multiplicity="1" />
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccTraDesCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Accommodation">
+              <PropertyRef Name="IDAccTraDesCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DestinationAccommodation">
+          <End Role="Destination" Type="Self.Destination" Multiplicity="1" />
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Accommodation">
+              <PropertyRef Name="IDDestination" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedbackAccommodation">
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="0..1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accommodation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="IDAccommodation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IDAccommodation">
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="0..1" />
+          <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accommodation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="IDAccommodation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoAccommodation">
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="0..1" />
+          <End Role="Info" Type="Self.Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accommodation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Info">
+              <PropertyRef Name="IDAccommodation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransportationAccommodation">
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="1" />
+          <End Role="Transportation" Type="Self.Transportation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accommodation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transportation">
+              <PropertyRef Name="IDAccommodation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccTraDesCategory">
+          <End Role="AccTraDesCategory" Type="Self.AccTraDesCategory" Multiplicity="1" />
+          <End Role="LifeInCity" Type="Self.LifeInCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccTraDesCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LifeInCity">
+              <PropertyRef Name="IDAccTraDesCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccTraDesCategoryProvider">
+          <End Role="AccTraDesCategory" Type="Self.AccTraDesCategory" Multiplicity="1" />
+          <End Role="Provider" Type="Self.Provider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccTraDesCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Provider">
+              <PropertyRef Name="IDAccTraDesCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccTraDesCategoryTransportation">
+          <End Role="AccTraDesCategory" Type="Self.AccTraDesCategory" Multiplicity="1" />
+          <End Role="Transportation" Type="Self.Transportation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccTraDesCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transportation">
+              <PropertyRef Name="IDAccTraDesCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Destination" Type="Self.Destination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Destination">
+              <PropertyRef Name="IDCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admin">
+          <End Role="CTEmployee" Type="Self.CTEmployee" Multiplicity="1" />
+          <End Role="LifeInCity" Type="Self.LifeInCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CTEmployee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LifeInCity">
+              <PropertyRef Name="IDAdmin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedbackUser">
+          <End Role="CTEmployee" Type="Self.CTEmployee" Multiplicity="1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CTEmployee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoEmployee">
+          <End Role="CTEmployee" Type="Self.CTEmployee" Multiplicity="0..1" />
+          <End Role="Info" Type="Self.Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CTEmployee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Info">
+              <PropertyRef Name="IDEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Destination">
+          <End Role="Destination" Type="Self.Destination" Multiplicity="1" />
+          <End Role="LifeInCity" Type="Self.LifeInCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LifeInCity">
+              <PropertyRef Name="IDDestination" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DestinationTransportation">
+          <End Role="Destination" Type="Self.Destination" Multiplicity="1" />
+          <End Role="Transportation" Type="Self.Transportation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transportation">
+              <PropertyRef Name="IDDestinationFrom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoDestinationProvider">
+          <End Role="Destination" Type="Self.Destination" Multiplicity="0..1" />
+          <End Role="Info" Type="Self.Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Info">
+              <PropertyRef Name="IDDestinationProvider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedbackLifeInCity">
+          <End Role="LifeInCity" Type="Self.LifeInCity" Multiplicity="0..1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LifeInCity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="IDLifeInCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedbackTransportation">
+          <End Role="Transportation" Type="Self.Transportation" Multiplicity="0..1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transportation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="IDTransportation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoProvider">
+          <End Role="Provider" Type="Self.Provider" Multiplicity="0..1" />
+          <End Role="Info" Type="Self.Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Info">
+              <PropertyRef Name="IDProvider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IDLifeInCity">
+          <End Role="LifeInCity" Type="Self.LifeInCity" Multiplicity="0..1" />
+          <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LifeInCity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="IDLifeInCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IDProvider">
+          <End Role="Provider" Type="Self.Provider" Multiplicity="0..1" />
+          <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="IDProvider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBBTAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accommodations" EntityType="Self.Accommodation" />
+          <EntitySet Name="AccTraDesCategories" EntityType="Self.AccTraDesCategory" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="CTEmployees" EntityType="Self.CTEmployee" />
+          <EntitySet Name="Destinations" EntityType="Self.Destination" />
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+          <EntitySet Name="Infoes" EntityType="Self.Info" />
+          <EntitySet Name="LifeInCities" EntityType="Self.LifeInCity" />
+          <EntitySet Name="Pictures" EntityType="Self.Picture" />
+          <EntitySet Name="Providers" EntityType="Self.Provider" />
+          <EntitySet Name="Transportations" EntityType="Self.Transportation" />
+          <AssociationSet Name="FK_AccTraDesCategoryAccommodation" Association="Self.FK_AccTraDesCategoryAccommodation">
+            <End Role="AccTraDesCategory" EntitySet="AccTraDesCategories" />
+            <End Role="Accommodation" EntitySet="Accommodations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DestinationAccommodation" Association="Self.FK_DestinationAccommodation">
+            <End Role="Destination" EntitySet="Destinations" />
+            <End Role="Accommodation" EntitySet="Accommodations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedbackAccommodation" Association="Self.FK_FeedbackAccommodation">
+            <End Role="Accommodation" EntitySet="Accommodations" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IDAccommodation" Association="Self.FK_IDAccommodation">
+            <End Role="Accommodation" EntitySet="Accommodations" />
+            <End Role="Picture" EntitySet="Pictures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoAccommodation" Association="Self.FK_InfoAccommodation">
+            <End Role="Accommodation" EntitySet="Accommodations" />
+            <End Role="Info" EntitySet="Infoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransportationAccommodation" Association="Self.FK_TransportationAccommodation">
+            <End Role="Accommodation" EntitySet="Accommodations" />
+            <End Role="Transportation" EntitySet="Transportations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccTraDesCategory" Association="Self.FK_AccTraDesCategory">
+            <End Role="AccTraDesCategory" EntitySet="AccTraDesCategories" />
+            <End Role="LifeInCity" EntitySet="LifeInCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccTraDesCategoryProvider" Association="Self.FK_AccTraDesCategoryProvider">
+            <End Role="AccTraDesCategory" EntitySet="AccTraDesCategories" />
+            <End Role="Provider" EntitySet="Providers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccTraDesCategoryTransportation" Association="Self.FK_AccTraDesCategoryTransportation">
+            <End Role="AccTraDesCategory" EntitySet="AccTraDesCategories" />
+            <End Role="Transportation" EntitySet="Transportations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country" Association="Self.FK_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Destination" EntitySet="Destinations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admin" Association="Self.FK_Admin">
+            <End Role="CTEmployee" EntitySet="CTEmployees" />
+            <End Role="LifeInCity" EntitySet="LifeInCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedbackUser" Association="Self.FK_FeedbackUser">
+            <End Role="CTEmployee" EntitySet="CTEmployees" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoEmployee" Association="Self.FK_InfoEmployee">
+            <End Role="CTEmployee" EntitySet="CTEmployees" />
+            <End Role="Info" EntitySet="Infoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Destination" Association="Self.FK_Destination">
+            <End Role="Destination" EntitySet="Destinations" />
+            <End Role="LifeInCity" EntitySet="LifeInCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DestinationTransportation" Association="Self.FK_DestinationTransportation">
+            <End Role="Destination" EntitySet="Destinations" />
+            <End Role="Transportation" EntitySet="Transportations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoDestinationProvider" Association="Self.FK_InfoDestinationProvider">
+            <End Role="Destination" EntitySet="Destinations" />
+            <End Role="Info" EntitySet="Infoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedbackLifeInCity" Association="Self.FK_FeedbackLifeInCity">
+            <End Role="LifeInCity" EntitySet="LifeInCities" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedbackTransportation" Association="Self.FK_FeedbackTransportation">
+            <End Role="Transportation" EntitySet="Transportations" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoProvider" Association="Self.FK_InfoProvider">
+            <End Role="Provider" EntitySet="Providers" />
+            <End Role="Info" EntitySet="Infoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IDLifeInCity" Association="Self.FK_IDLifeInCity">
+            <End Role="LifeInCity" EntitySet="LifeInCities" />
+            <End Role="Picture" EntitySet="Pictures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IDProvider" Association="Self.FK_IDProvider">
+            <End Role="Provider" EntitySet="Providers" />
+            <End Role="Picture" EntitySet="Pictures" />
+          </AssociationSet>
+          <EntitySet Name="Admin_SMTP_parameteres" EntityType="DBBTAModel.Admin_SMTP_parametere" />
+          <EntitySet Name="Employee_Activations" EntityType="DBBTAModel.Employee_Activation" />
+        </EntityContainer>
+        <EntityType Name="Admin_SMTP_parametere">
+          <Key>
+            <PropertyRef Name="Ind" />
+          </Key>
+          <Property Name="Ind" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="host" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Employee_Activation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ActivationCode" Type="Guid" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBBTAModelStoreContainer" CdmEntityContainer="DBBTAEntities">
+          <EntitySetMapping Name="Accommodations">
+            <EntityTypeMapping TypeName="DBBTAModel.Accommodation">
+              <MappingFragment StoreEntitySet="Accommodation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDDestination" ColumnName="IDDestination" />
+                <ScalarProperty Name="IDAccTraDesCategory" ColumnName="IDAccTraDesCategory" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccTraDesCategories">
+            <EntityTypeMapping TypeName="DBBTAModel.AccTraDesCategory">
+              <MappingFragment StoreEntitySet="AccTraDesCategory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AccTraDesType" ColumnName="AccTraDesType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="DBBTAModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTEmployees">
+            <EntityTypeMapping TypeName="DBBTAModel.CTEmployee">
+              <MappingFragment StoreEntitySet="CTEmployee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Destinations">
+            <EntityTypeMapping TypeName="DBBTAModel.Destination">
+              <MappingFragment StoreEntitySet="Destination">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDCountry" ColumnName="IDCountry" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feedbacks">
+            <EntityTypeMapping TypeName="DBBTAModel.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDLifeInCity" ColumnName="IDLifeInCity" />
+                <ScalarProperty Name="IDTransportation" ColumnName="IDTransportation" />
+                <ScalarProperty Name="IDAccommodation" ColumnName="IDAccommodation" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="FeedbackDate" ColumnName="FeedbackDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Heading" ColumnName="Heading" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Infoes">
+            <EntityTypeMapping TypeName="DBBTAModel.Info">
+              <MappingFragment StoreEntitySet="Info">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDProvider" ColumnName="IDProvider" />
+                <ScalarProperty Name="IDEmployee" ColumnName="IDEmployee" />
+                <ScalarProperty Name="IDDestinationProvider" ColumnName="IDDestinationProvider" />
+                <ScalarProperty Name="IDAccommodation" ColumnName="IDAccommodation" />
+                <ScalarProperty Name="AccommodationTypeName" ColumnName="AccommodationTypeName" />
+                <ScalarProperty Name="WebAddress" ColumnName="WebAddress" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Tel1" ColumnName="Tel1" />
+                <ScalarProperty Name="Tel2" ColumnName="Tel2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LifeInCities">
+            <EntityTypeMapping TypeName="DBBTAModel.LifeInCity">
+              <MappingFragment StoreEntitySet="LifeInCity">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDDestination" ColumnName="IDDestination" />
+                <ScalarProperty Name="IDAccTraDesCategory" ColumnName="IDAccTraDesCategory" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+                <ScalarProperty Name="IDAdmin" ColumnName="IDAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pictures">
+            <EntityTypeMapping TypeName="DBBTAModel.Picture">
+              <MappingFragment StoreEntitySet="Picture">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDLifeInCity" ColumnName="IDLifeInCity" />
+                <ScalarProperty Name="IDAccommodation" ColumnName="IDAccommodation" />
+                <ScalarProperty Name="IDEmployee" ColumnName="IDEmployee" />
+                <ScalarProperty Name="IDProvider" ColumnName="IDProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Providers">
+            <EntityTypeMapping TypeName="DBBTAModel.Provider">
+              <MappingFragment StoreEntitySet="Provider">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDAccTraDesCategory" ColumnName="IDAccTraDesCategory" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transportations">
+            <EntityTypeMapping TypeName="DBBTAModel.Transportation">
+              <MappingFragment StoreEntitySet="Transportation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDDestinationFrom" ColumnName="IDDestinationFrom" />
+                <ScalarProperty Name="IDAccommodation" ColumnName="IDAccommodation" />
+                <ScalarProperty Name="IDAccTraDesCategory" ColumnName="IDAccTraDesCategory" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admin_SMTP_parameteres">
+            <EntityTypeMapping TypeName="DBBTAModel.Admin_SMTP_parametere">
+              <MappingFragment StoreEntitySet="Admin SMTP parameteres">
+                <ScalarProperty Name="host" ColumnName="host" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Ind" ColumnName="Ind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_Activations">
+            <EntityTypeMapping TypeName="DBBTAModel.Employee_Activation">
+              <MappingFragment StoreEntitySet="Employee Activation">
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

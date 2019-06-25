@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<script src="../../Scripts/jquery-3.3.1.js" type="text/javascript"></script>
+		<script src="../../Scripts/jquery-3.3.1.min.js" type="text/javascript"></script>
+		<meta charset="utf-8" />
+		<title></title>
+
+		<script>
+			var U_header = "bearer J6tQNYWnXGnI3pAmrQkqZ_DKeftAf6ISPD5Xm18oIUWOhIvBI-TkuRnSUg-qhnmEihmLOnGyxrXL8ZBNwcRLl-HbTBQX6p9FVj9wqhje-Dh-6GDIQVF8G2I_IzSMtxjmIPCd1Rd84PHsROqE31ZKQRwmtFKo2fsCxBCn60ZFOZhQbut3DjbDFHAd7PkuwcrQU3cM5xM4p33HL1NDFFzHslZ4G9jq3zO2g2KZPkcF0Po";
+
+			//*******************************************************
+			//lista destinationa za selectovanu country
+			function Get_destinationList() {
+				var xhr = new XMLHttpRequest();
+
+				xhr.open('GET', "http://localhost:59998/api/Destinations/GetDestinations/1");
+				xhr.setRequestHeader('Authorization', U_header);
+			xhr.onload = function () {
+					let responseObj = xhr.response;
+					document.getElementById("Text1").value = responseObj;
+				};
+				xhr.send();
+			}
+
+			//*******************************************************
+			function Post_Login() {
+				var za_slanje = "grant_type=password&username=fragg01@yandex.com&password=bujanovac";
+
+				let xhr = new XMLHttpRequest();
+				xhr.open("POST", "http://localhost:59998/Token");
+				xhr.setRequestHeader('Authorization', U_header);
+				xhr.setRequestHeader('Content-type', 'x-www-form-urlencoded');
+
+				xhr.onload = function () {
+					let responseObj = xhr.response;
+					document.getElementById("Text2").value = responseObj;
+				};
+				xhr.send(za_slanje);
+			}
+
+			//*******************************************************
+			//menja podatke destination
+			function Put_dest() {
+				var Dest1 = {
+					Id: 1004,
+					IDCountry: 1,
+					CityName: "Negoslavci"
+				};
+
+				var mess1;
+
+				$.ajax({
+					url: "http://localhost:59998/api/destinations/PutDestination",
+					type: 'PUT',
+					headers: { "Authorization": U_header },
+					data: Dest1,
+
+					success: function (Data, Tstatus, xhr) {
+						mess1 = JSON.parse(xhr.responseText);
+
+						document.getElementById("Text3").value = xhr.status + " " + Tstatus + " " + mess1;
+					},
+					error: function (xhr, Tstatus, errorStr) {
+						mess1 = JSON.parse(xhr.responseText).message;
+
+						document.getElementById("Text3").value = xhr.status + " " + errorStr + " " + mess1;
+					}
+				});
+			}
+
+			//*******************************************************
+			//Dodaje novu zemlju POST
+			function Add_destination() {
+				var dest1 = {
+					IDCountry: 1,
+					CityName: "New Now"
+				};
+
+				var mess1;
+
+				$.ajax({
+					url: "http://localhost:59998/api/Destinations/PostDestination",
+					type: 'POST',
+					headers: { "Authorization": U_header },
+					data: dest1,
+
+					success: function (Data, Tstatus, xhr) {
+						mess1 = JSON.parse(xhr.responseText);
+
+						document.getElementById("Text4").value = xhr.status + " " + Tstatus + " " + mess1;
+					},
+					error: function (xhr, Tstatus, errorStr) {
+						mess1 = JSON.parse(xhr.responseText).message;
+
+						document.getElementById("Text4").value = xhr.status + " " + errorStr + " " + mess1;
+					}
+				});
+			}
+
+			//*******************************************************
+			//Briše destination DELETE
+			function Delete_destin() {
+				var mess1;
+
+				$.ajax({
+					url: "http://localhost:59998/api/Destinations/DeleteDestination/1004",
+					type: 'DELETE',
+					headers: { "Authorization": U_header },
+
+					success: function (Data, Tstatus, xhr) {
+						mess1 = JSON.parse(xhr.responseText);
+
+						document.getElementById("Text5").value = xhr.status + " " + Tstatus + " " + mess1;
+					},
+					error: function (xhr, Tstatus, errorStr) {
+						mess1 = JSON.parse(xhr.responseText).message;
+
+						document.getElementById("Text5").value = xhr.status + " " + errorStr + " " + mess1;
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<input id="Button1" type="button" value="Lista Destintions" onclick="Get_destinationList()" />
+		<textarea id="Text1" type="text" cols="40" rows="20"></textarea>
+		<br />
+
+		<input id="Button2" type="button" value="Login Email, Pass" onclick="Post_Login()" />
+		<textarea id="Text2" type="text" cols="40" rows="20"></textarea>
+		<br />
+
+		<input id="Button3" type="button" value="Promeni podatke destination" onclick="Put_dest()" />
+		<textarea id="Text3" type="text" cols="40" rows="10"></textarea>
+		<br />
+
+		<input id="Button4" type="button" value="Dodaj destination" onclick="Add_destination()" />
+		<textarea id="Text4" type="text" cols="40" rows="10"></textarea>
+		<br />
+
+		<input id="Button5" type="button" value="Briši destination" onclick="Delete_destin()" />
+		<textarea id="Text5" type="text" cols="40" rows="10"></textarea>
+	</body>
+	</body>
+</html>

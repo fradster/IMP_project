@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<script src="../../Scripts/jquery-3.3.1.js" type="text/javascript"></script>
+		<script src="../../Scripts/jquery-3.3.1.min.js" type="text/javascript"></script>
+		<meta charset="utf-8" />
+
+		<title></title>
+
+		<script>
+			var U_header = "bearer nbtWxOHVNXq6p0RaQrrmbW3jlbUBcaAyFj1aT0SXPlTIEqJ8M88D0Vh5CQLWjZio0d2y2uRr5k5w-1A3T3UeeK4Uhh-_2yVuxnPUDewR3bcMfv3N1DzaNpbOVcTtQwPRQVIeyssRJJh6KjioMXO_J2H2hha7zmvGtoHZAMDGovHYNxKqkzRH7vgpPE23bKWJc7gKwzXUMOJlHHVPQT2mqPsc9iCGqSzJ8YCg5woCpNY";
+
+			//*******************************************************
+			//lista feedback za selectovanu kategoriju
+			function Get_feedbacks() {
+				var xhr = new XMLHttpRequest();
+
+				xhr.open('GET', "http://localhost:59998/api/Feedbacks/GetFeedback/5");
+				xhr.setRequestHeader('Authorization', U_header);
+				xhr.onload = function () {
+				let responseObj = xhr.response;
+				document.getElementById("Text1").value = responseObj;
+			};
+			xhr.send();
+		}
+
+		//*******************************************************
+		function Post_Login() {
+			var za_slanje = "grant_type=password&username=fragg01@yandex.com&password=bujanovac";
+
+			let xhr = new XMLHttpRequest();
+			xhr.open("POST", "http://localhost:59998/Token");
+			xhr.setRequestHeader('Authorization', U_header);
+			xhr.setRequestHeader('Content-type', 'x-www-form-urlencoded');
+
+			xhr.onload = function () {
+				let responseObj = xhr.response;
+				document.getElementById("Text2").value = responseObj;
+			};
+			xhr.send(za_slanje);
+		}
+
+	  </script>
+  </head >
+
+	<body>
+		<input id="Button1" type="button" value="Lista komentara" onclick="Get_feedbacks()" />
+		<textarea id="Text1" type="text" cols="40" rows="20"></textarea>
+		<br />
+
+		<input id="Button2" type="button" value="Login Email, Pass" onclick="Post_Login()" />
+		<textarea id="Text2" type="text" cols="40" rows="20"></textarea>
+		<br />
+	</body>
+</html >

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2ea5958de78040e6b15c50fd060ff55d" Name="Diagram1">
+        <EntityTypeShape EntityType="DBBTAModel.Accommodation" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBBTAModel.AccTraDesCategory" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBBTAModel.Country" Width="1.5" PointX="1.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBBTAModel.CTEmployee" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBBTAModel.Destination" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBBTAModel.Feedback" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBBTAModel.Info" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBBTAModel.LifeInCity" Width="1.5" PointX="6" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBBTAModel.Picture" Width="1.5" PointX="8.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBBTAModel.Provider" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBBTAModel.Transportation" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="DBBTAModel.FK_AccTraDesCategoryAccommodation" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_DestinationAccommodation" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_FeedbackAccommodation" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_IDAccommodation" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_InfoAccommodation" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_TransportationAccommodation" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_AccTraDesCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_AccTraDesCategoryProvider" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_AccTraDesCategoryTransportation" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_FeedbackUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_InfoEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_Destination" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_DestinationTransportation" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_InfoDestinationProvider" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_FeedbackLifeInCity" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_FeedbackTransportation" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_InfoProvider" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_IDLifeInCity" ManuallyRouted="false" />
+        <AssociationConnector Association="DBBTAModel.FK_IDProvider" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DBBTAModel.Admin_SMTP_parametere" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBBTAModel.Employee_Activation" Width="1.5" PointX="2.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,120 @@
+use DBBTA
+
+/*Primary and foreign keys*/
+
+ALTER TABLE CTEmployee
+ADD CONSTRAINT PK_CTEmployee PRIMARY KEY (ID);
+
+ALTER TABLE Accommodation
+ADD CONSTRAINT PK_Accommodation PRIMARY KEY (ID);
+
+ALTER TABLE AccTraDesCategory
+ADD CONSTRAINT PK_AccTraDesCategory PRIMARY KEY (ID);
+
+ALTER TABLE Country
+ADD CONSTRAINT PK_Country PRIMARY KEY (ID);
+
+ALTER TABLE Destination
+ADD CONSTRAINT PK_Destination PRIMARY KEY (ID);
+
+ALTER TABLE Feedback
+ADD CONSTRAINT PK_Feedback PRIMARY KEY (ID);
+
+ALTER TABLE Info
+ADD CONSTRAINT PK_Info PRIMARY KEY (ID);
+
+ALTER TABLE LifeInCity
+ADD CONSTRAINT PK_LifeInCity PRIMARY KEY (ID);
+
+ALTER TABLE Provider
+ADD CONSTRAINT PK_Provider PRIMARY KEY (ID);
+
+ALTER TABLE Transportation
+ADD CONSTRAINT PK_Transportation PRIMARY KEY (ID);
+
+ALTER TABLE Destination
+ADD CONSTRAINT FK_Country
+FOREIGN KEY (IDCountry) REFERENCES Country(ID);
+
+ALTER TABLE LifeInCity
+ADD CONSTRAINT FK_Destination
+FOREIGN KEY (IDDestination) REFERENCES Destination(ID);
+
+ALTER TABLE LifeInCity
+ADD CONSTRAINT FK_AccTraDesCategory
+FOREIGN KEY (IDAccTraDesCategory) REFERENCES AccTraDesCategory(ID);
+
+ALTER TABLE LifeInCity
+ADD CONSTRAINT FK_Admin
+FOREIGN KEY (IDAdmin) REFERENCES CTEmployee(ID);
+
+ALTER TABLE Accommodation
+ADD CONSTRAINT FK_DestinationAccommodation
+FOREIGN KEY (IDDestination) REFERENCES Destination(ID);
+
+ALTER TABLE Accommodation
+ADD CONSTRAINT FK_AccTraDesCategoryAccommodation
+FOREIGN KEY (IDAccTraDesCategory) REFERENCES AccTraDesCategory(ID);
+
+ALTER TABLE Transportation
+ADD CONSTRAINT FK_DestinationTransportation
+FOREIGN KEY (IDDestinationFrom) REFERENCES Destination(ID);
+
+ALTER TABLE Transportation
+ADD CONSTRAINT FK_TransportationAccommodation
+FOREIGN KEY (IDAccommodation) REFERENCES Accommodation(ID);
+
+ALTER TABLE Transportation
+ADD CONSTRAINT FK_AccTraDesCategoryTransportation
+FOREIGN KEY (IDAccTraDesCategory) REFERENCES AccTraDesCategory(ID);
+
+ALTER TABLE Provider
+ADD CONSTRAINT FK_AccTraDesCategoryProvider
+FOREIGN KEY (IDAccTraDesCategory) REFERENCES AccTraDesCategory(ID);
+
+ALTER TABLE Feedback
+ADD CONSTRAINT FK_FeedbackLifeInCity
+FOREIGN KEY (IDLifeInCity) REFERENCES LifeInCity(ID);
+
+ALTER TABLE Feedback
+ADD CONSTRAINT FK_FeedbackTransportation
+FOREIGN KEY (IDTransportation) REFERENCES Transportation(ID);
+
+ALTER TABLE Feedback
+ADD CONSTRAINT FK_FeedbackAccommodation
+FOREIGN KEY (IDAccommodation) REFERENCES Accommodation(ID);
+
+ALTER TABLE Feedback
+ADD CONSTRAINT FK_FeedbackUser
+FOREIGN KEY (IDUser) REFERENCES CTEmployee(ID);
+
+ALTER TABLE Info
+ADD CONSTRAINT FK_InfoProvider
+FOREIGN KEY (IDProvider) REFERENCES Provider(ID);
+
+ALTER TABLE Info
+ADD CONSTRAINT FK_InfoEmployee
+FOREIGN KEY (IDEmployee) REFERENCES CTEmployee(ID);
+
+ALTER TABLE Info
+ADD CONSTRAINT FK_InfoDestinationProvider
+FOREIGN KEY (IDDestinationProvider) REFERENCES Destination(ID);
+
+ALTER TABLE Info
+ADD CONSTRAINT FK_InfoAccommodation
+FOREIGN KEY (IDAccommodation) REFERENCES Accommodation(ID);
+
+ALTER TABLE Picture
+ADD CONSTRAINT PK_Picture PRIMARY KEY (ID);
+
+ALTER TABLE Picture
+ADD CONSTRAINT FK_IDLifeInCity
+FOREIGN KEY (IDLifeInCity) REFERENCES LifeInCity(ID);
+
+ALTER TABLE Picture
+ADD CONSTRAINT FK_IDAccommodation
+FOREIGN KEY (IDAccommodation) REFERENCES Accommodation(ID);
+
+ALTER TABLE Picture
+ADD CONSTRAINT FK_IDProvider
+FOREIGN KEY (IDProvider) REFERENCES Provider(ID);
